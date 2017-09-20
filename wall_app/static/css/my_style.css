@@ -1,0 +1,81 @@
+
+.form_div {
+    margin-bottom: 4rem;
+}
+
+section {
+    border: 1px solid lightgrey;
+    margin: 3rem auto;
+    border-radius: 3px;
+}
+
+.main_container {
+    width: 80%;
+}
+
+#msg_post_form textarea {
+    height: 7rem;
+    font-size: 4rem;
+}
+/* _______message block style______ */
+.msg_block {
+    padding: 1rem 3rem;
+}
+
+.left {
+    display: inline-block;
+}
+
+.delete_form {
+    display: inline-block;
+    float: right;
+    clear: right;
+}
+
+.msg_block h4 {
+    font-size: 1.7rem;
+    font-weight: 500;
+    margin: 0;
+}
+
+.msg_block p {
+    font-size: 2rem;
+}
+
+.msg_block span {
+    font-size: 0.9rem;
+    color: lightslategray;
+}
+
+
+/* _______comment block style_______ */
+.comment_block {
+    width: 60%;
+    margin-left: 4rem;
+    margin-bottom: 2rem;
+}
+
+.comment_block h5 {
+    font-size: 1.3rem;
+    font-weight: lighter;
+    margin: 0;
+}
+
+.comment_block span {
+    font-size: 0.9rem;
+    color: lightslategray;
+}
+
+.comment_block p {
+    font-size: 1.7rem;
+}
+
+.comment_form {
+    width: 90%;
+}
+
+.each_comment {
+    padding: 1rem;
+}
+
+

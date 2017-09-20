@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Walls{% endblock %} 
+
+
+{% block page_content %}
+    {% if not name %}
+        <h2>Hi!</h2>
+    {% else %}
+        <h2>Hi, {{name}}!</h2>
+    {% endif %}
+    <div class="form_div">
+        {{ wtf.quick_form(msg_form, action="/post", id="msg_post_form") }} 
+   </div>
+    {% for post_result in post_results %}
+    <section>
+        <!-- message div starts -->
+        <div class="row msg_block">
+            <div class="left">
+                <h4>{{ post_result['name'] }}</h4>
+                <span>  {{ post_result['created_at'] }}</span>
+                <p>{{ post_result['msg'] }}</p>
+            </div>
+            <!-- post delete button -->
+            <form class="delete_form" action="/delete" method="POST">
+                <input type="hidden" name="msg_id" value="{{ post_result['msg_id'] }}">
+                <input type="hidden" name="user_id" value="{{ post_result['user_id'] }}">
+                <input type="submit" name="submit" value="Delete" class="btn btn-default">
+            </form>
+        </div>
+        <!-- comment div starts -->
+        <div class="comment_block">
+            {% for comment_result in comment_results %}
+                {% if post_result['msg_id'] == comment_result['message_id'] %}
+                    <div class="each_comment">
+                        <h5>{{ comment_result['name'] }}</h5>
+                        <span>{{ comment_result['created_at'] }}</span>
+                        <p>{{ comment_result['comment'] }}</p>
+                    </div>
+                {% endif %}
+            {% endfor %}
+
+            <form action="/comment" class="form comment_form" method="POST">
+                <!-- RECORD msg_id COMMENT LINKS TO -->
+                <input type="hidden" name="msg_id_for_comment" value="{{ post_result['msg_id'] }}">
+                <div class="form-group  required">
+                    <label class="control-label" for="comment">Comment</label>
+                    <textarea class="form-control" id="comment" name="comment" maxlength="140" required></textarea>
+                </div>
+                <input type="submit" name="submit_comment" value="comment" class="btn btn-default">
+            </form>
+        </div>
+    </section>
+    {% endfor %}
+{% endblock %}

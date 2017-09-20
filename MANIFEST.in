@@ -1,0 +1,3 @@
+Graft wall/static
+Graft wall/templates
+include wall/mysqlconnection
